@@ -1,4 +1,5 @@
 import express from "express";
+import { verifyToken } from "../middelware/authMiddleware.js";
 import { signupasyoutuber, OAuthUrl, signupaseditor , loginasyoutuber , loginaseditor , logout , oauth2callback } from "../controllers/auth.controllers.js";
 
 const router = express.Router();
@@ -11,7 +12,7 @@ router.post("/loginaseditor", loginaseditor); // {Implemented}
 router.post("/loginasyoutuber", loginasyoutuber); // {Implemented}
 router.post("/signupasyoutuber", signupasyoutuber); // {Implemented}
 
-router.get("/getOauthUrl/:id", OAuthUrl); 
+router.get("/getOauthUrl/:id", verifyToken , OAuthUrl); 
 router.get("/oauth2callback", oauth2callback); 
 
 router.post("/logout", logout); // {pending}

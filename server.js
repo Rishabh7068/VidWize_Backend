@@ -16,7 +16,7 @@ const corsOptions = {
 
 config();
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT ;
 
 app.use(cors(corsOptions));
 app.use(express.json());
