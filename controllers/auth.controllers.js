@@ -222,13 +222,13 @@ export const oauth2callback = async (req, res) => {
     const issuedAt = Date.now(); // Current time in milliseconds
     const expiresInSeconds = tokens.refresh_token_expires_in; // Refresh token lifespan (7 days)
     const expiresAt = issuedAt + expiresInSeconds * 1000; // Convert seconds to milliseconds
-    
+
     tokens.tokens_will_expire_at_in_ms = expiresAt;
     tokens.tokens_will_expire_at = new Date(expiresAt).toISOString();
     tokens.tokens_created_At = new Date().toISOString();
 
     await db.collection("usersYoutuber").doc(uid).update({
-      tokens: tokens
+      tokens: tokens,
     });
 
     res.redirect(`http://localhost:5173/creator?oauth_success=true`);
