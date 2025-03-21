@@ -325,7 +325,7 @@ export const submitWork = [
           videoId: videoInsertResponse.data.id,
           videoUrl: `https://www.youtube.com/watch?v=${videoInsertResponse.data.id}`,
           status: "pending_review",
-          submitefAt: new Date(),
+          submitedAt: new Date(),
         });
 
       // Delete the temp file after upload
